@@ -1,8 +1,12 @@
 package com.qby.bean;
 
+import org.hibernate.validator.constraints.Email;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.Date;
 import java.util.List;
@@ -15,11 +19,17 @@ import java.util.Map;
  * @author qby
  * @date 2020/8/1 23:06
  */
+//@PropertySource(value = "classpath:person.properties")
 @ConfigurationProperties(prefix = "person")
 @Component
+@Validated
 public class Person {
+//    @Value("${person.last-name}")
+//    @Email
     private String lastName;
+//    @Value("#{11*2}")
     private Integer age;
+//    @Value("true")
     private boolean boss;
     private Date birth;
 
